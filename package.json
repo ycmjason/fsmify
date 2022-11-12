@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "typecheck": "tsc --build",
+    "typecheck": "yarn workspaces foreach -pi run typecheck",
+    "build": "yarn workspaces foreach -tpi run build",
     "eslint": "eslint --ext .js,.vue,.ts packages",
     "eslint:fix": "yarn eslint --fix",
     "prettier": "prettier .",
@@ -17,6 +18,7 @@
     "packages/**"
   ],
   "devDependencies": {
+    "@microsoft/api-extractor": "^7.33.6",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
     "esbuild": "^0.15.13",

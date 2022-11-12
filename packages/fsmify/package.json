@@ -1,18 +1,27 @@
 {
   "name": "fsmify",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple finite state machine library with first-class typescript support.",
   "main": "dist/main.js",
-  "types": "src/main.ts",
+  "types": "dist/main.d.ts",
   "repository": "https://github.com/ycmjason/fsmify",
   "author": "Jason Yu",
   "license": "MIT",
   "scripts": {
     "test": "vitest",
-    "build": "esbuild src/main.ts --platform=node --bundle --minify --sourcemap --outdir=dist"
+    "typecheck": "tsc --noEmit",
+    "pre-build": "/bin/rm -rf dist dist-dts",
+    "build": "yarn pre-build && yarn build:js && yarn build:dts",
+    "build:js": "esbuild src/main.ts --platform=node --bundle --minify --sourcemap --outdir=dist",
+    "build:dts": "tsc --emitDeclarationOnly && api-extractor run --local --verbose && yarn post-build:dts",
+    "post-build:dts": "/bin/rm -rf dist-dts"
   },
   "devDependencies": {
     "esbuild": "^0.15.13",
+    "typescript": "^4.8.4",
     "vitest": "^0.25.1"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }

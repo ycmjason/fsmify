@@ -1,3 +1,7 @@
 {
-  "extends": "../../tsconfig.base.json"
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist-dts"
+  },
+  "include": ["src"]
 }

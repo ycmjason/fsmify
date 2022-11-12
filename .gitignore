@@ -21,6 +21,7 @@
 /coverage
 dist
 dist-ssr
+dist-dts
 lerna-debug.log*
 logs
 node_modules

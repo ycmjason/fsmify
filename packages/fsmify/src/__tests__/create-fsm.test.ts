@@ -1,10 +1,10 @@
 import { it, expect, vi, describe } from 'vitest';
-import { createFiniteStateMachine } from '../main';
+import { createFSM } from '../create-fsm';
 import { createInsideOutPromise } from '../test-helpers/createInsideOutPromise';
 import { flushPromises } from '../test-helpers/flushPromises';
 
 it('should initiate stae with accordance to initialState ', () => {
-  const fsm = createFiniteStateMachine({
+  const fsm = createFSM({
     initialState: 'init',
     states: {
       init: { move: 'moving' },
@@ -17,7 +17,7 @@ it('should initiate stae with accordance to initialState ', () => {
 
 describe('state transitions', () => {
   it('should move to new state when receiving valid event', async () => {
-    const fsm = createFiniteStateMachine({
+    const fsm = createFSM({
       initialState: 'init',
       states: {
         init: { move: 'moving' },
@@ -31,7 +31,7 @@ describe('state transitions', () => {
   });
 
   it('should ignore invalid event', async () => {
-    const fsm = createFiniteStateMachine({
+    const fsm = createFSM({
       initialState: 'init',
       states: {
         init: { stand: 'standing' },
@@ -124,7 +124,7 @@ describe('event listening', () => {
   ] as const)(
     'should call listener for $hookName before/after transition correctly, with correct payload',
     async ({ hookName, hookArgs, sendEvent, expected }) => {
-      const fsm = createFiniteStateMachine({
+      const fsm = createFSM({
         initialState: 'init',
         states: {
           init: { move: 'moving', jump: 'jumping' },
@@ -159,7 +159,7 @@ describe('event listening', () => {
   ] as const)(
     'should not call listener for $hookName when the transition does not match',
     async ({ hookName, hookArgs, sendEvent }) => {
-      const fsm = createFiniteStateMachine({
+      const fsm = createFSM({
         initialState: 'init',
         states: {
           init: { move: 'moving', jump: 'jumping' },
@@ -184,7 +184,7 @@ describe('event listening', () => {
   );
 
   it('should wait for all listeners (including async) to finish before resolving send', async () => {
-    const fsm = createFiniteStateMachine({
+    const fsm = createFSM({
       initialState: 'init',
       states: {
         init: { move: 'moving' },
