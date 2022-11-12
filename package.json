@@ -1,0 +1,10 @@
+{
+  "name": "fsmify",
+  "version": "0.0.1",
+  "description": "A simple finite state machine library with first-class typescript support.",
+  "main": "index.js",
+  "repository": "https://github.com/ycmjason/fsmify",
+  "author": "Jason Yu",
+  "license": "MIT",
+  "private": false
+}
