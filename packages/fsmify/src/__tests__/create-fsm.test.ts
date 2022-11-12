@@ -238,3 +238,17 @@ describe('event listening', () => {
     await promise;
   });
 });
+it('should send only 1 event at a time', async () => {
+  const fsm = createFSM({
+    initialState: 'init',
+    states: {
+      init: { move: 'moving', jump: 'jumping' },
+      moving: { jump: 'jumpingAndMoving' },
+      jumping: {},
+      jumpingAndMoving: {},
+    },
+  });
+
+  await Promise.all([fsm.send('move'), fsm.send('jump')]);
+  expect(fsm.getCurrentState()).toBe('jumpingAndMoving');
+});

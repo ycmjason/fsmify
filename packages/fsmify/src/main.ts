@@ -1,2 +1,2 @@
 export { createFSM } from './create-fsm';
-export type { FSM, FSMTransitionEventPayload, FSMConfig } from './create-fsm';
+export type { FSM, FSMTransitionPayload, FSMConfig, FSMTransitionListener } from './create-fsm';
