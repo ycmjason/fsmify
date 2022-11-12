@@ -1,13 +1,14 @@
 {
   "private": true,
+  "version": "0.0.3",
   "scripts": {
     "typecheck": "yarn workspaces foreach -pi run typecheck",
+    "test": "yarn workspaces foreach run test",
     "build": "yarn workspaces foreach -tpi run build",
-    "eslint": "eslint --ext .js,.vue,.ts packages",
-    "eslint:fix": "yarn eslint --fix",
-    "prettier": "prettier .",
-    "prettier:check": "prettier . --check",
-    "prettier:write": "yarn prettier --write",
+    "lint": "eslint --ext .js,.vue,.ts packages",
+    "lint:fix": "yarn eslint --fix",
+    "format:check": "prettier . --check",
+    "format:write": "prettier . --write",
     "postinstall": "husky install"
   },
   "lint-staged": {

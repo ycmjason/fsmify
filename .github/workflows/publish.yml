@@ -1,0 +1,43 @@
+name: Bump version and publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Semver type of new version (major / minor / patch)'
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - run: yarn --immutable
+
+      - name: Setup Git
+        run: |
+          git config user.name 'Jason Yu'
+          git config user.email 'me@ycmjason.com'
+      - name: bump version
+        run: yarn workspaces foreach run version ${{ github.event.inputs.version }} && yarn version ${{ github.event.inputs.version }}
+
+      - name: Create git tag
+        run: |
+          VERSION=`node -p "require('./package.json').version"`
+          git tag -a $VERSION -m "Version $VERSION"
+
+      - name: Push latest version
+        run: git push origin main --follow-tags
