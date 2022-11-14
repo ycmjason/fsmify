@@ -12,6 +12,10 @@ on:
           - minor
           - major
 
+concurrency:
+  group: ${{ github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   bump-version:
     runs-on: ubuntu-latest
@@ -31,13 +35,15 @@ jobs:
         run: |
           git config user.name 'Jason Yu'
           git config user.email 'me@ycmjason.com'
+
       - name: bump version
         run: yarn workspaces foreach run version ${{ github.event.inputs.version }} && yarn version ${{ github.event.inputs.version }}
 
-      - name: Create git tag
+      - name: Commit and create git tag
         run: |
           VERSION=`node -p "require('./package.json').version"`
+          git commit -am "Version: $VERSION"
           git tag -a $VERSION -m "Version $VERSION"
 
       - name: Push latest version
-        run: git push origin main --follow-tags
+        run: git push origin main --tags

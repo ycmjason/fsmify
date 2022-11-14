@@ -1,6 +1,6 @@
 {
   "name": "fsmify",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A simple finite state machine library with first-class typescript support.",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
