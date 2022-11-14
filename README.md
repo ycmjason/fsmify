@@ -1,5 +1,8 @@
 # fsmify
 
+[![CI](https://github.com/ycmjason/fsmify/actions/workflows/ci.yml/badge.svg)](https://github.com/ycmjason/fsmify/actions/workflows/ci.yml)
+[![Bump version and publish](https://github.com/ycmjason/fsmify/actions/workflows/publish.yml/badge.svg)](https://github.com/ycmjason/fsmify/actions/workflows/publish.yml)
+
 A simple finite state machine library with first-class typescript support.
 
 ## Install
@@ -31,13 +34,13 @@ const fsm = createFSM({
 });
 
 fsm.getCurrentState(); // idle
-fsm.send('walk');
+await fsm.send('walk');
 fsm.getCurrentState(); // walking
-fsm.send('stop');
+await fsm.send('stop');
 fsm.getCurrentState(); // idle
-fsm.send('jump');
+await fsm.send('jump');
 fsm.getCurrentState(); // jumping
-fsm.send('stop'); // transition defined in `jumping` state take precedence
+await fsm.send('stop'); // transition defined in `jumping` state take precedence
 fsm.getCurrentState(); // jumping
 
 fsm.onBeforeEnterState('idle', ({ fromState, toState, event }) => {
