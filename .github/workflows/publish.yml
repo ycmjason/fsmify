@@ -34,6 +34,9 @@ jobs:
           git config user.name 'Jason Yu'
           git config user.email 'me@ycmjason.com'
 
+      - name: Build
+        run: yarn build
+
       - name: bump version
         run: yarn workspaces foreach version ${{ github.event.inputs.version }}
 
