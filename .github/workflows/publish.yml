@@ -44,9 +44,9 @@ jobs:
           git tag -a $VERSION -m "Version $VERSION"
 
       - name: NPM Publish
-        run: yarn workspaces foreach --no-private run npm publish
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          yarn config set --home 'npmRegistries["https://registry.yarnpkg.com"].npmAuthToken' "${{ secrets.NPM_TOKEN }}"
+          yarn workspaces foreach --no-private npm publish
 
       - name: Push latest version
         run: git push origin main --tags
