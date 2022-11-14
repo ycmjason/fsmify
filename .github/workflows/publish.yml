@@ -35,7 +35,7 @@ jobs:
           git config user.email 'me@ycmjason.com'
 
       - name: bump version
-        run: yarn workspaces foreach run version ${{ github.event.inputs.version }} && yarn version ${{ github.event.inputs.version }}
+        run: yarn workspaces foreach version ${{ github.event.inputs.version }} && yarn version ${{ github.event.inputs.version }}
 
       - name: Commit and create git tag
         run: |
