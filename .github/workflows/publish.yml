@@ -22,8 +22,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          ssh-key: ${{ secrets.DEPLOY_KEY }}
 
       - uses: actions/setup-node@v3
         with:
@@ -44,6 +42,11 @@ jobs:
           VERSION=`node -p "require('./package.json').version"`
           git commit -am "Version: $VERSION"
           git tag -a $VERSION -m "Version $VERSION"
+
+      - name: NPM Publish
+        run: yarn workspaces foreach --no-private run npm publish
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Push latest version
         run: git push origin main --tags
