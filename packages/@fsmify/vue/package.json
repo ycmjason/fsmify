@@ -1,0 +1,44 @@
+{
+  "name": "@fsmify/vue",
+  "version": "0.0.11",
+  "description": "A vue composable function for interacting with fsmify's FSM.",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "repository": "https://github.com/ycmjason/fsmify",
+  "author": "Jason Yu",
+  "license": "MIT",
+  "scripts": {
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "pre-build": "/bin/rm -rf dist dist-dts",
+    "build": "yarn pre-build && yarn build:js && yarn build:dts",
+    "build:js": "esbuild src/main.ts --external:vue-demi --external:fsmify --platform=node --minify --bundle --sourcemap --outdir=dist",
+    "build:dts": "tsc --emitDeclarationOnly && api-extractor run --local --verbose && yarn post-build:dts",
+    "post-build:dts": "/bin/rm -rf dist-dts"
+  },
+  "devDependencies": {
+    "@vue/test-utils": "^2.2.3",
+    "esbuild": "^0.15.14",
+    "fsmify": "workspace:^",
+    "jsdom": "^20.0.2",
+    "typescript": "^4.8.4",
+    "vitest": "^0.25.2",
+    "vue": "^3.2.45"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "@vue/composition-api": "^1.0.0-rc.1",
+    "fsmify": "workspace:^",
+    "vue": "^2.0.0 || >=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "vue-demi": "^0.13.11"
+  }
+}
