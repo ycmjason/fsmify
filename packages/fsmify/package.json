@@ -1,6 +1,6 @@
 {
   "name": "fsmify",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "A simple finite state machine library with first-class typescript support.",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -23,5 +23,8 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }

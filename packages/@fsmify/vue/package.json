@@ -1,6 +1,6 @@
 {
   "name": "@fsmify/vue",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "A vue composable function for interacting with fsmify's FSM.",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -40,5 +40,8 @@
   },
   "dependencies": {
     "vue-demi": "^0.13.11"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
