@@ -34,8 +34,8 @@ jobs:
 
       - name: Setup Git
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
 
       - name: bump version
         run: yarn workspaces foreach version ${{ github.event.inputs.version }}
