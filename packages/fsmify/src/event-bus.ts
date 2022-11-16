@@ -1,6 +1,6 @@
 export type Listener<Payload extends readonly unknown[]> = (
   ...payload: Payload
-) => void | Promise<void>;
+) => unknown | Promise<unknown>;
 
 export type On<Payload extends readonly unknown[]> = (listener: Listener<Payload>) => () => void;
 
