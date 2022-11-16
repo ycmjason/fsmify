@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "0.0.16",
+  "version": "0.0.17",
   "scripts": {
     "typecheck": "yarn workspaces foreach -pi run typecheck",
     "test": "yarn workspaces foreach run test run",
