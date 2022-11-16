@@ -22,6 +22,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          ssh-key: ${{ secrets.GH_ADMIN_SSH_KEY }}
 
       - uses: actions/setup-node@v3
         with:
@@ -32,8 +34,8 @@ jobs:
 
       - name: Setup Git
         run: |
-          git config user.name 'Jason Yu'
-          git config user.email 'me@ycmjason.com'
+          git config user.name github-actions
+          git config user.email github-actions@github.com
 
       - name: bump version
         run: yarn workspaces foreach version ${{ github.event.inputs.version }}
@@ -48,7 +50,7 @@ jobs:
           git tag -a $VERSION -m "Version $VERSION"
 
       - name: Push latest version
-        run: git push origin main --force-with-lease --tags
+        run: git push origin main --tags
 
       - name: NPM Publish
         run: |
