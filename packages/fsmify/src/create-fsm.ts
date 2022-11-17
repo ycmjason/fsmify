@@ -35,37 +35,19 @@ export type FSMTransitionListener<State extends string, Event extends string> = 
   [FSMTransitionPayload<State, Event>]
 >;
 
-export type FSM<State extends string = string, Event extends string = string> = {
-  readonly send: (_event: Event) => Promise<void>;
-  readonly getCurrentState: () => State;
-  readonly onBeforeAllTransition: (listener: FSMTransitionListener<State, Event>) => void;
-  readonly onAfterAllTransition: (listener: FSMTransitionListener<State, Event>) => void;
-  readonly onBeforeTransition: (
-    event: Event,
-    listener: FSMTransitionListener<State, Event>,
-  ) => () => void;
-  readonly onAfterTransition: (
-    event: Event,
-    listener: FSMTransitionListener<State, Event>,
-  ) => () => void;
-  readonly onBeforeEnterState: (
-    state: State,
-    listener: FSMTransitionListener<State, Event>,
-  ) => () => void;
-  readonly onAfterEnterState: (
-    state: State,
-    listener: FSMTransitionListener<State, Event>,
-  ) => () => void;
-  readonly onBeforeLeaveState: (
-    state: State,
-    listener: FSMTransitionListener<State, Event>,
-  ) => () => void;
-  readonly onAfterLeaveState: (
-    state: State,
-    listener: FSMTransitionListener<State, Event>,
-  ) => () => void;
-  readonly destroy: () => void;
-};
+export type FSM<State extends string = string, Event extends string = string> = Readonly<{
+  send: (_event: Event) => Promise<void>;
+  getCurrentState: () => State;
+  onBeforeAllTransition: (listener: FSMTransitionListener<State, Event>) => void;
+  onAfterAllTransition: (listener: FSMTransitionListener<State, Event>) => void;
+  onBeforeTransition: (event: Event, listener: FSMTransitionListener<State, Event>) => () => void;
+  onAfterTransition: (event: Event, listener: FSMTransitionListener<State, Event>) => () => void;
+  onBeforeEnterState: (state: State, listener: FSMTransitionListener<State, Event>) => () => void;
+  onAfterEnterState: (state: State, listener: FSMTransitionListener<State, Event>) => () => void;
+  onBeforeLeaveState: (state: State, listener: FSMTransitionListener<State, Event>) => () => void;
+  onAfterLeaveState: (state: State, listener: FSMTransitionListener<State, Event>) => () => void;
+  destroy: () => void;
+}>;
 
 export const createFSM = <State extends string, Event extends string>({
   initialState,
