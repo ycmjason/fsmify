@@ -1,10 +1,11 @@
-import { onUnmounted, ref, Ref } from 'vue-demi';
+import { onUnmounted, readonly, ref, Ref } from 'vue-demi';
 import { createFSM, FSM, FSMConfig } from 'fsmify';
 
 export type VueFSM<State extends string, Event extends string> = Omit<
   FSM<State, Event>,
   'destroy' | 'getCurrentState'
-> & { currentState: Readonly<Ref<State>>; $fsm: FSM<State, Event> };
+> &
+  Readonly<{ currentState: Readonly<Ref<State>>; $fsm: FSM<State, Event> }>;
 
 export const useFSM = <State extends string, Event extends string>(
   config: FSMConfig<State, Event>,
@@ -20,7 +21,7 @@ export const useFSM = <State extends string, Event extends string>(
 
   return {
     ...$fsm,
-    currentState,
+    currentState: readonly(currentState) as Readonly<Ref<State>>,
     $fsm,
   };
 };
