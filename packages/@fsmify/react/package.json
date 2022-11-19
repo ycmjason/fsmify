@@ -24,7 +24,7 @@
     "typecheck": "tsc --noEmit",
     "pre-build": "/bin/rm -rf dist dist-dts",
     "build": "yarn pre-build && yarn build:js && yarn build:dts",
-    "build:js": "esbuild src/main.ts --external:vue-demi --external:fsmify --platform=node --minify --bundle --sourcemap --outdir=dist",
+    "build:js": "esbuild src/main.ts --external:react --external:fsmify --platform=node --minify --bundle --sourcemap --outdir=dist",
     "build:dts": "tsc --emitDeclarationOnly && api-extractor run --local --verbose && yarn post-build:dts",
     "post-build:dts": "/bin/rm -rf dist-dts"
   },
