@@ -13,11 +13,11 @@ export const useFSM = <State extends string, Event extends string>(
   const $fsm = useMemo(() => createFSM(config), [config]);
   const [currentState, setCurrentState] = useState($fsm.getCurrentState());
 
-  $fsm.onAfterAllTransition(({ toState }) => {
-    setCurrentState(toState);
-  });
-
   useEffect(() => {
+    $fsm.onAfterAllTransition(({ toState }) => {
+      setCurrentState(toState);
+    });
+
     () => $fsm.destroy();
   }, [$fsm]);
 
