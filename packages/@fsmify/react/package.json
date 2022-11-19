@@ -1,6 +1,6 @@
 {
   "name": "@fsmify/react",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "A react hook for interacting with fsmify's FSM.",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
