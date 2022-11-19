@@ -1,19 +1,20 @@
 {
-  "name": "@fsmify/vue",
+  "name": "@fsmify/react",
   "version": "0.0.20",
-  "description": "A vue composable function for interacting with fsmify's FSM.",
+  "description": "A react hook for interacting with fsmify's FSM.",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/ycmjason/fsmify.git",
-    "directory": "packages/@fsmify/vue"
+    "directory": "packages/@fsmify/react"
   },
   "keywords": [
     "state",
     "machine",
     "finite state machine",
-    "vue",
+    "react",
+    "hook",
     "typescript"
   ],
   "author": "Jason Yu",
@@ -28,29 +29,22 @@
     "post-build:dts": "/bin/rm -rf dist-dts"
   },
   "devDependencies": {
-    "@vue/test-utils": "^2.2.3",
+    "@testing-library/react": "^13.4.0",
+    "@types/react": "^18.0.25",
     "esbuild": "^0.15.14",
     "fsmify": "workspace:^",
     "jsdom": "^20.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "typescript": "^4.9.3",
-    "vitest": "^0.25.2",
-    "vue": "^3.2.45"
+    "vitest": "^0.25.2"
   },
   "files": [
     "dist"
   ],
   "peerDependencies": {
-    "@vue/composition-api": "^1.0.0-rc.1",
     "fsmify": "workspace:^",
-    "vue": "^2.0.0 || >=3.0.0"
-  },
-  "peerDependenciesMeta": {
-    "@vue/composition-api": {
-      "optional": true
-    }
-  },
-  "dependencies": {
-    "vue-demi": "^0.13.11"
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "publishConfig": {
     "access": "public"

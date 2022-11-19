@@ -9,6 +9,12 @@
     "url": "https://github.com/ycmjason/fsmify.git",
     "directory": "packages/fsmify"
   },
+  "keywords": [
+    "state",
+    "machine",
+    "finite state machine",
+    "typescript"
+  ],
   "author": "Jason Yu",
   "license": "MIT",
   "scripts": {
