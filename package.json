@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "0.0.20",
+  "version": "0.0.21",
   "repository": "github:ycmjason/fsmify",
   "scripts": {
     "typecheck": "yarn workspaces foreach -pi run typecheck",
