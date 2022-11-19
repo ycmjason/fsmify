@@ -4,7 +4,11 @@
   "description": "A vue composable function for interacting with fsmify's FSM.",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
-  "repository": "https://github.com/ycmjason/fsmify",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ycmjason/fsmify.git",
+    "directory": "packages/@fsmify/vue"
+  },
   "author": "Jason Yu",
   "license": "MIT",
   "scripts": {

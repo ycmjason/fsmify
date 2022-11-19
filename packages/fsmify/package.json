@@ -4,7 +4,11 @@
   "description": "A simple finite state machine library with first-class typescript support.",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
-  "repository": "https://github.com/ycmjason/fsmify",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ycmjason/fsmify.git",
+    "directory": "packages/fsmify"
+  },
   "author": "Jason Yu",
   "license": "MIT",
   "scripts": {
