@@ -1,4 +1,4 @@
-# @fsmify/vue
+# @fsmify/react
 
 A react hook for interacting with fsmify's FSM.
 
