@@ -48,6 +48,10 @@ fsm.onBeforeEnterState('idle', async ({ fromState, toState, event }) => {
 await fsm.send('STOP_NOW'); // promise resolves after ^ finishes; console: 'idle now'
 ```
 
+## Using with UI libraries
+
+You can use [@fsmify/vue] and [@fsmify/react] which provides a more idiomatic way of interacting with [fsmify].
+
 ## API
 
 ### `createFSM(config: FSMConfig): FSM`
@@ -128,3 +132,7 @@ fsm.onBeforeEnterState('running', async () => {
 ## Author
 
 Jason Yu (@ycmjason)
+
+[fsmify]: https://github.com/ycmjason/fsmify/tree/main/packages/fsmify
+[@fsmify/vue]: https://github.com/ycmjason/fsmify/tree/main/packages/%40fsmify/vue
+[@fsmify/react]: https://github.com/ycmjason/fsmify/tree/main/packages/%40fsmify/react
