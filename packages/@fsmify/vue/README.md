@@ -14,7 +14,7 @@ yarn add fsmify @fsmify/vue
 
 ## Example
 
-See this example on [stackblitz](https://stackblitz.com/edit/vitejs-vite-pkevt2?file=src/App.vue).
+See this example on [stackblitz](https://stackblitz.com/edit/fsmify-vue-demo?file=src/App.vue).
 
 ```vue
 <template>
