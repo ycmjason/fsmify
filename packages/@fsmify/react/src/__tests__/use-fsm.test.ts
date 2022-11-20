@@ -21,15 +21,48 @@ it('should update currentState after transition', async () => {
     useFSM({
       initialState: 'closed',
       states: {
-        closed: { OPEN: 'opened' },
+        closed: { OPEN: 'opening' },
+        opening: { OPEN_FINISH: 'opened' },
         opened: {},
       },
     }),
   );
 
   await fsmRef.current.send('OPEN');
-
   rerender();
-
+  await fsmRef.current.send('OPEN_FINISH');
+  rerender();
   expect(fsmRef.current.currentState).toBe('opened');
+});
+
+it('should not create new fsm on rerender', () => {
+  const { result: fsmRef, rerender } = renderHook(() =>
+    useFSM({
+      initialState: 'closed',
+      states: {
+        closed: { OPEN: 'opened' },
+        opened: {},
+      },
+    }),
+  );
+
+  const firstFsm = fsmRef.current.$fsm;
+  rerender();
+  expect(fsmRef.current.$fsm).toBe(firstFsm);
+});
+
+it('should destroy fsm when hook unmounts', async () => {
+  const { result: fsmRef, unmount } = renderHook(() =>
+    useFSM({
+      initialState: 'closed',
+      states: {
+        closed: { OPEN: 'opened' },
+        opened: {},
+      },
+    }),
+  );
+
+  unmount();
+
+  expect(fsmRef.current.$fsm).toEqual({});
 });

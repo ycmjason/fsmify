@@ -10,16 +10,18 @@ export type ReactFSM<State extends string, Event extends string> = Omit<
 export const useFSM = <State extends string, Event extends string>(
   config: FSMConfig<State, Event>,
 ): ReactFSM<State, Event> => {
-  const $fsm = useMemo(() => createFSM(config), [config]);
+  const $fsm = useMemo(() => createFSM(config), []);
   const [currentState, setCurrentState] = useState($fsm.getCurrentState());
 
   useEffect(() => {
     $fsm.onAfterAllTransition(({ toState }) => {
       setCurrentState(toState);
     });
+  }, []);
 
-    () => $fsm.destroy();
-  }, [$fsm]);
+  useEffect(() => {
+    return () => $fsm.destroy();
+  }, []);
 
   return {
     ...$fsm,

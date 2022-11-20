@@ -1,3 +1,5 @@
+import { destroyObject } from './utils/destroy-object';
+
 export type Listener<Payload extends readonly unknown[]> = (
   ...payload: Payload
 ) => unknown | Promise<unknown>;
@@ -25,7 +27,12 @@ export const createEventBus = <Payload extends readonly unknown[]>(): {
     listeners.delete(listener);
   };
 
-  const destroy = (): void => listeners.clear();
+  const destroy = (): void => {
+    listeners.clear();
+    destroyObject(bus);
+  };
 
-  return { emit, on, off, destroy };
+  const bus = { emit, on, off, destroy };
+
+  return bus;
 };
