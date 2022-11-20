@@ -264,3 +264,9 @@ it('type: should allow listener return anything', () => {
   });
   fsm.onAfterAllTransition(() => 3);
 });
+
+it('should destroy everything', () => {
+  const fsm = createFSM({ initialState: 'init', states: { init: {} } });
+  fsm.destroy();
+  expect(fsm).toEqual({});
+});

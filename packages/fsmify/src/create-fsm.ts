@@ -1,6 +1,6 @@
 import { createEventBus, Listener, On } from './event-bus';
 import { NoInfer } from './types/NoInfer';
-import { destroyObject } from './utils/destroyObject';
+import { destroyObject } from './utils/destroy-object';
 import { onceAtATime } from './utils/onceAtATime';
 
 const filterEvents = <Payload extends readonly unknown[]>(
