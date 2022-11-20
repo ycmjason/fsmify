@@ -7,6 +7,7 @@ This is the mono repo hosting the following packages
 
 - [fsmify](https://github.com/ycmjason/fsmify/tree/main/packages/fsmify)
 - [@fsmify/vue](https://github.com/ycmjason/fsmify/tree/main/packages/%40fsmify/vue)
+- [@fsmify/react](https://github.com/ycmjason/fsmify/tree/main/packages/%40fsmify/react)
 
 ## Author
 
