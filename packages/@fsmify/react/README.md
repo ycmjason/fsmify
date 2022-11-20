@@ -14,14 +14,13 @@ yarn add fsmify @fsmify/react
 
 ## Example
 
+You can see the following example live at [codesandbox](https://codesandbox.io/s/fsmify-react-demo-3x4qkj?file=/src/App.tsx).
+
 ```tsx
 import { useFSM } from '@fsmify/react';
+import { useEffect } from 'react';
 
-const loadData = async () => {
-  await new Promise(res => setTimeout(res, 2500));
-};
-
-const Component = () => {
+export default () => {
   const fsm = useFSM({
     initialState: 'init',
     states: {
@@ -37,11 +36,17 @@ const Component = () => {
     fsm.send('LOAD_FINISH');
   };
 
+  useEffect(() => {
+    fsm.onBeforeEnterState('loading', () => {
+      console.log('loading...');
+    });
+  });
+
   return (
     <>
       <h2>@fsmify/react demo</h2>
       {{
-        init: () => <button onClick="load">Click me to load</button>,
+        init: () => <button onClick={load}>Click me to load</button>,
         loading: () => <div>Loading...</div>,
         loaded: () => <div>Hello world!</div>,
       }[fsm.currentState]()}
