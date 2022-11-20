@@ -4,7 +4,7 @@
   "repository": "github:ycmjason/fsmify",
   "scripts": {
     "typecheck": "yarn workspaces foreach -pi run typecheck",
-    "test": "yarn workspaces foreach run test run",
+    "test": "yarn workspaces foreach -p run test run",
     "build": "yarn workspaces foreach --topological-dev -pi run build",
     "lint": "eslint --ext .js,.vue,.ts packages",
     "lint:fix": "yarn eslint --fix",
