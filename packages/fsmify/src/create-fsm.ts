@@ -38,8 +38,8 @@ export type FSMTransitionListener<State extends string, Event extends string> = 
 export type FSM<State extends string = string, Event extends string = string> = Readonly<{
   send: (_event: Event) => Promise<void>;
   getCurrentState: () => State;
-  onBeforeAllTransition: (listener: FSMTransitionListener<State, Event>) => void;
-  onAfterAllTransition: (listener: FSMTransitionListener<State, Event>) => void;
+  onBeforeAllTransition: (listener: FSMTransitionListener<State, Event>) => () => void;
+  onAfterAllTransition: (listener: FSMTransitionListener<State, Event>) => () => void;
   onBeforeTransition: (event: Event, listener: FSMTransitionListener<State, Event>) => () => void;
   onAfterTransition: (event: Event, listener: FSMTransitionListener<State, Event>) => () => void;
   onBeforeEnterState: (state: State, listener: FSMTransitionListener<State, Event>) => () => void;

@@ -14,13 +14,9 @@ export const useFSM = <State extends string, Event extends string>(
   const [currentState, setCurrentState] = useState($fsm.getCurrentState());
 
   useEffect(() => {
-    $fsm.onAfterAllTransition(({ toState }) => {
+    return $fsm.onAfterAllTransition(({ toState }) => {
       setCurrentState(toState);
     });
-  }, []);
-
-  useEffect(() => {
-    return () => $fsm.destroy();
   }, []);
 
   return {

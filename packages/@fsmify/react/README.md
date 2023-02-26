@@ -74,7 +74,7 @@ See also: [FSMConfig](https://github.com/ycmjason/fsmify/tree/main/packages/fsmi
 - <del>`getCurrentState()`</del>
   - This is removed in favor of `currentState` (see above).
 - <del>`destroy()`</del>
-  - `destroy()` is removed because `ReactFSM` is automatically destroyed as the component [unmounts](https://reactjs.org/docs/react-component.html#unmounting).
+  - `destroy()` is removed because `ReactFSM` is automatically destroyed as the component [unmounts](https://vuejs.org/guide/essentials/lifecycle.html).
 
 ## Author
 

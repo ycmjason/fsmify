@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "0.0.26",
+  "version": "0.0.25",
   "repository": "github:ycmjason/fsmify",
   "scripts": {
     "typecheck": "yarn workspaces foreach -pi run typecheck",
@@ -20,17 +20,17 @@
     "packages/**"
   ],
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.33.6",
-    "@typescript-eslint/eslint-plugin": "^5.43.0",
-    "@typescript-eslint/parser": "^5.43.0",
-    "esbuild": "^0.15.14",
-    "eslint": "^8.27.0",
-    "eslint-config-prettier": "^8.5.0",
+    "@microsoft/api-extractor": "^7.34.4",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "esbuild": "^0.15.18",
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-unused-imports": "^2.0.0",
-    "husky": "^8.0.2",
-    "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1",
-    "typescript": "^4.9.3"
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
+    "prettier": "^2.8.4",
+    "typescript": "^4.9.5"
   },
   "packageManager": "yarn@3.2.4"
 }

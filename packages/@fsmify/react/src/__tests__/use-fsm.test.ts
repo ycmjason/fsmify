@@ -50,19 +50,3 @@ it('should not create new fsm on rerender', () => {
   rerender();
   expect(fsmRef.current.$fsm).toBe(firstFsm);
 });
-
-it('should destroy fsm when hook unmounts', async () => {
-  const { result: fsmRef, unmount } = renderHook(() =>
-    useFSM({
-      initialState: 'closed',
-      states: {
-        closed: { OPEN: 'opened' },
-        opened: {},
-      },
-    }),
-  );
-
-  unmount();
-
-  expect(fsmRef.current.$fsm).toEqual({});
-});
