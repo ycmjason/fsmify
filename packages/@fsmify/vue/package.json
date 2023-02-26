@@ -1,6 +1,6 @@
 {
   "name": "@fsmify/vue",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "A vue composable function for interacting with fsmify's FSM.",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
